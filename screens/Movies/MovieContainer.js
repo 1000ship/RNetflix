@@ -23,6 +23,5 @@ export default () => {
   useEffect(()=> {
     getData()
   }, [])
-  console.log( movies )
   return <MoviesPresenter {...movies} />;
 }

@@ -5,6 +5,7 @@ import { Dimensions, Image, TouchableOpacity } from 'react-native';
 import { apiImage } from '../../api';
 import Poster from '../Poster';
 import Votes from './Votes';
+import { trimText } from '../../utils';
 
 const {width:WIDTH, height:HEIGHT} = Dimensions.get("window");
 
@@ -23,13 +24,14 @@ const BG = styled.Image`
 const Content = styled.View`
   height: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 `;
 
 const Data = styled.View`
   width: 50%;
   align-items: flex-start;
+  margin-left: 30px;
 `;
 
 const Title = styled.Text`
@@ -65,13 +67,13 @@ const Slide = ({title, backgroundImage, votes, overview, poster}) => (
   <Container>
     <BG resizeMode='cover' source={{uri: apiImage(backgroundImage)}}/>
     <Content>
-      <Poster url={apiImage(poster)} />
+      <Poster url={poster} />
       <Data>
-        <Title>{title.length > 30 ? `${title.slice(0, 40)}...` : title }</Title>
+        <Title>{trimText(title, 40)}</Title>
         <VotesContainer>
           <Votes votes={votes}/>
         </VotesContainer>
-        <Overview>{overview.length > 80 ? `${overview.slice(0, 80)}...` : overview}</Overview>
+        <Overview>{trimText(overview, 80)}</Overview>
         <TouchableOpacity>
           <Button>
             <ButtonText>View Details</ButtonText>
