@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
+import { StyleSheet, Image, StatusBar } from 'react-native';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -34,6 +34,7 @@ export default function App() {
   const onFinish = () => {
     setIsReady(true)
   }
+
   return !isReady ? <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={(e)=>console.error(e)}/> : (
     <>
       <NavigationContainer>
