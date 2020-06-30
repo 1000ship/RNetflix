@@ -12,8 +12,8 @@ export default () => {
       screenOptions={{
         headerStyle: {
           backgroundColor: "black",
-          // borderBottomColor: "blue",
-          // shadowColor: "black"
+          borderBottomColor: "black",
+          shadowColor: "black"
         },
         headerTintColor: "white",
         headerBackTitleVisible: false,
