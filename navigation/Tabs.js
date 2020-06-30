@@ -11,14 +11,15 @@ const getHeaderName = (route) => route?.state?.routeNames[route?.state?.index] |
 
 export default ( {navigation, route} ) => {
   useLayoutEffect( ()=>{
+    const name = getHeaderName(route)
     navigation?.setOptions( {
-       title: getHeaderName(route)
+       title: name
     } )
   }, [ route ] );
   return (
     <Tab.Navigator>
       <Tab.Screen name="Movies" component={Movies} />
-      <Tab.Screen name="Tv" component={Tv} />
+      <Tab.Screen name="TV" component={Tv} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Favs" component={Favs} />
     </Tab.Navigator>
