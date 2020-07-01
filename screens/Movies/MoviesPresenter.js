@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Swiper from 'react-native-web-swiper';
-import { ScrollView, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import Slide from '../../components/Movies/Slide';
 import Title from '../../components/Movies/Title';
 import Vertical from '../../components/Movies/Vertical';
-import Horizontal from './Horizontal';
-import ScrollContainer from '../../components/ScrollContainer'
+import Horizontal from '../../components/Movies/Horizontal';
+import ScrollContainer from '../../components/ScrollContainer';
+import HorizontalSlider from '../../components/HorizontalSlider';
+import List from '../../components/List';
 
 const {height: HEIGHT} = Dimensions.get('window');
 
@@ -46,10 +48,7 @@ export default ({ loading, nowPlaying, popular, upcoming }) => (
     </SlideContainer>
     <Container>
       <Title title={'Popular Movies'}></Title>
-      <ScrollView
-        contentContainerStyle={{paddingLeft: 10}}
-        horizontal
-        showsHorizontalScrollIndicator={false}>
+      <HorizontalSlider>
         {popular.map(movie =>
           <Vertical
             key={movie.id}
@@ -58,18 +57,19 @@ export default ({ loading, nowPlaying, popular, upcoming }) => (
             title={movie.title}
             votes={movie.vote_average}/>
         )}
-      </ScrollView>
+      </HorizontalSlider>
 
-      <Title title={'Coming Soon'}></Title>
-      {upcoming.map(movie => (
-        <Horizontal
-          key={movie.id}
-          id={movie.id}
-          title={movie.title}
-          releaseDate={movie.release_date}
-          poster={movie.poster_path}
-          overview={movie.overview} />
-      ))}
+      <List title={'Coming Soon'}>
+        {upcoming.map(movie => (
+          <Horizontal
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            releaseDate={movie.release_date}
+            poster={movie.poster_path}
+            overview={movie.overview} />
+        ))}
+      </List>
     </Container>
   </ScrollContainer>
 )

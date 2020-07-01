@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
-import Poster from '../../components/Poster';
+import Poster from '../Poster';
 import { trimText, formatDate } from '../../utils';
 import { TouchableOpacity } from 'react-native';
 

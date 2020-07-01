@@ -14,7 +14,7 @@ const ScrollContainer = ({loading, children}) => (
 
 ScrollContainer.propTypes = {
   loading: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 }
 
 export default ScrollContainer;
