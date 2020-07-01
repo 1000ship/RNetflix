@@ -1,16 +1,13 @@
 import React from "react";
-import styled from "styled-components/native";
 import Input from "../../components/Search/Input";
 import PropTypes from "prop-types";
 import ScrollContainer from "../../components/ScrollContainer";
 import HorizontalSilder from "../../components/HorizontalSlider";
 import Vertical from "../../components/Movies/Vertical";
-
-const Container = styled.ScrollView``;
-
-const Text = styled.Text``;
+import { ActivityIndicator } from "react-native";
 
 const SearchPresenter = ({
+  loading,
   movies,
   shows,
   keyword,
@@ -30,6 +27,7 @@ const SearchPresenter = ({
       onChange={onChange}
       onSubmit={onSubmit}
     />
+    {loading && <ActivityIndicator style={{paddingTop: 30}} size={'small'} color={'white'}/>}
 
     {movies && movies.length > 0 ? (
       <HorizontalSilder title={"Movie Results"}>
@@ -56,6 +54,7 @@ const SearchPresenter = ({
             poster={show.poster_path}
             votes={show.vote_average}
             overview={show.overview}
+            isTv={true}
           />
         ))}
       </HorizontalSilder>

@@ -3,6 +3,7 @@ import { ScrollView, ActivityIndicator, RefreshControl } from 'react-native';
 import PropTypes from 'prop-types';
 
 const ScrollContainer = ({loading, children, refreshFunc}) => {
+  if( !loading ) loading = false;
   const [refreshing, setRefreshing] = useState(false)
   const onRefresh = async () => {
     setRefreshing(true)
@@ -23,7 +24,7 @@ const ScrollContainer = ({loading, children, refreshFunc}) => {
 )}
 
 ScrollContainer.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   children: PropTypes.node,
   refreshFunc: PropTypes.func,
 }

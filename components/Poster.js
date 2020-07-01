@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { apiImage } from '../api';
+import { Asset } from 'expo-asset';
 
 const Image = styled.Image`
   width: 100px;
@@ -12,7 +13,7 @@ const Image = styled.Image`
 const Poster = ({url}) => url ? (
   <Image source={{uri: apiImage(url)}}/>
 ) : (
-  <Image/>
+  <Image source={require('../assets/empty.png')}/>
 );
 
 Poster.propTypes = {

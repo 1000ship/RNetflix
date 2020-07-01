@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import {View, Text, Button} from 'react-native';
-import { tvApi } from '../../api';
-import TvPresenter from './TvPresenter';
+import React, { useState, useEffect } from "react";
+import { View, Text, Button } from "react-native";
+import { tvApi } from "../../api";
+import TvPresenter from "./TvPresenter";
 
 export default () => {
   const [shows, setShows] = useState({
@@ -14,20 +14,26 @@ export default () => {
     popularError: null,
     today: [],
     todayError: null,
-  })
+  });
   const getData = async () => {
-    const [thisWeek, thisWeekError] = await tvApi.thisWeek()
-    const [topRated, topRatedError] = await tvApi.topRated()
-    const [popular, popularError] = await tvApi.popular()
-    const [today, todayError] = await tvApi.today()
+    const [thisWeek, thisWeekError] = await tvApi.thisWeek();
+    const [topRated, topRatedError] = await tvApi.topRated();
+    const [popular, popularError] = await tvApi.popular();
+    const [today, todayError] = await tvApi.today();
     setShows({
-      thisWeek, thisWeekError, topRated, topRatedError, popular, popularError, today, todayError,
-      loading: false
-    })
-  }
+      thisWeek,
+      thisWeekError,
+      topRated,
+      topRatedError,
+      popular,
+      popularError,
+      today,
+      todayError,
+      loading: false,
+    });
+  };
   useEffect(() => {
-    getData()
-  }, [])
-  return <TvPresenter {...shows}
-            refreshFunc={getData}/>;
-}
+    getData();
+  }, []);
+  return <TvPresenter {...shows} refreshFunc={getData} />;
+};

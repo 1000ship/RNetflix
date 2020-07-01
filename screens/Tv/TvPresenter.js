@@ -23,7 +23,8 @@ export default ({loading, today, topRated, popular, thisWeek, refreshFunc }) => 
             id={show.id}
             poster={show.poster_path}
             title={show.name}
-            votes={show.vote_average}/>
+            votes={show.vote_average}
+            isTv={true}/>
         )}
       </HorizontalSlider>
 
@@ -35,7 +36,8 @@ export default ({loading, today, topRated, popular, thisWeek, refreshFunc }) => 
             id={show.id}
             poster={show.poster_path}
             title={show.name}
-            votes={show.vote_average}/>
+            votes={show.vote_average}
+            isTv={true}/>
         )}
       </HorizontalSlider>
 
@@ -47,7 +49,8 @@ export default ({loading, today, topRated, popular, thisWeek, refreshFunc }) => 
             title={show.name}
             releaseDate={show.release_date}
             poster={show.poster_path}
-            overview={show.overview} />
+            overview={show.overview}
+            isTv={true}/>
         ))}
       </List>
     </Container>

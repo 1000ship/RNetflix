@@ -35,10 +35,12 @@ const ReleaseDate = styled.Text`
   margin: 10px 0px;
 `;
 
-const Horizontal = ({ id, title, releaseDate, poster, overview }) => {
+const Horizontal = ({ id, title, releaseDate, poster, overview, isTv }) => {
   const navigation = useNavigation();
   const goToDetail = () => {
-    navigation.navigate("Detail");
+    navigation.navigate("Detail", {
+      id, title, releaseDate, poster, overview, isTv
+    });
   };
   return (
     <TouchableOpacity onPress={goToDetail}>

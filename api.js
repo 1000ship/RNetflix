@@ -24,7 +24,7 @@ const getAnything = async(path, params = {}) => {
             data: {results},
             data
         } = await makeRequest(path, params);
-        return [results || ㅇㅁㅅㅁ, null]
+        return [results || data, null]
     } catch(e) {
         return [null, e]
     }
@@ -57,4 +57,6 @@ export const tvApi = {
 };
 
 export const apiImage = path =>
-  `https://image.tmdb.org/t/p/w500${path}`;
+  path ? `https://image.tmdb.org/t/p/w500${path}` : '';
+
+export const emptyImage = require('./assets/empty.png')

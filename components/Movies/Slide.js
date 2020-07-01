@@ -6,6 +6,7 @@ import { apiImage } from '../../api';
 import Poster from '../Poster';
 import Votes from './Votes';
 import { trimText } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
 
 const {width:WIDTH, height:HEIGHT} = Dimensions.get("window");
 
@@ -63,7 +64,14 @@ const ButtonText = styled.Text`
   color: white;
 `;
 
-const Slide = ({title, backgroundImage, votes, overview, poster}) => (
+const Slide = ({id, title, backgroundImage, votes, overview, poster, isTv}) => {
+  const navigation = useNavigation()
+  const goToDetail = () => {
+    navigation.navigate('Detail', {
+      id, title, backgroundImage, votes, overview, poster, isTv
+    })
+  }
+  return (
   <Container>
     <BG resizeMode='cover' source={{uri: apiImage(backgroundImage)}}/>
     <Content>
@@ -74,7 +82,7 @@ const Slide = ({title, backgroundImage, votes, overview, poster}) => (
           <Votes votes={votes}/>
         </VotesContainer>
         <Overview>{trimText(overview, 80)}</Overview>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToDetail}>
           <Button>
             <ButtonText>View Details</ButtonText>
           </Button>
@@ -82,7 +90,7 @@ const Slide = ({title, backgroundImage, votes, overview, poster}) => (
       </Data>
     </Content>
   </Container>
-)
+)}
 
 Slide.propTypes = {
   title: PropTypes.string.isRequired,
