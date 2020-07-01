@@ -30,8 +30,10 @@ const Section = styled.View`
 
 const Text = styled.Text``;
 
-export default ({ loading, nowPlaying, popular, upcoming }) => (
-  <ScrollContainer loading={loading}>
+export default ({ loading, nowPlaying, popular, upcoming, refreshFunc }) => (
+  <ScrollContainer
+    loading={loading}
+    refreshFunc={refreshFunc}>
     <SlideContainer>
       <Swiper controlsEnabled={false} loop timeout={3}>
       {nowPlaying.map(movie =>
@@ -47,8 +49,8 @@ export default ({ loading, nowPlaying, popular, upcoming }) => (
       </Swiper>
     </SlideContainer>
     <Container>
-      <Title title={'Popular Movies'}></Title>
-      <HorizontalSlider>
+      <HorizontalSlider
+        title={'Popular Movies'}>
         {popular.map(movie =>
           <Vertical
             key={movie.id}

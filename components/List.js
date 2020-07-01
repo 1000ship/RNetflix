@@ -5,9 +5,9 @@ import Title from './Movies/Title';
 
 const Container = styled.View``;
 
-const List = ({children}) => (
+const List = ({title, children}) => (
   <>
-    <Title title={'Coming Soon'}></Title>
+    <Title title={title}></Title>
     <Container>
       {children}
     </Container>
@@ -15,6 +15,7 @@ const List = ({children}) => (
 )
 
 List.propTypes = {
+  title: PropTypes.string.isRequired,
   children: PropTypes.node
 }
 

@@ -17,11 +17,13 @@ export default () => {
     const [popular, popularError] = await movieApi.popular();
     const [upcoming, upcomingError] = await movieApi.upcoming();
     setMovies({
-      nowPlaying, nowPlayingError, popular, popularError, upcoming, upcomingError
+      nowPlaying, nowPlayingError, popular, popularError, upcoming, upcomingError,
+      loading: false
     })
   }
-  useEffect(()=> {
+  useEffect(() => {
     getData()
   }, [])
-  return <MoviesPresenter {...movies} />;
+  return <MoviesPresenter {...movies}
+           refreshFunc={getData}/>;
 }

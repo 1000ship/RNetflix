@@ -10,42 +10,44 @@ import HorizontalSlider from '../../components/HorizontalSlider';
 
 const Container = styled.View``;
 
-export default ({loading, today, topRated, popular, thisWeek}) => (
-  <ScrollContainer loading={loading}>
+export default ({loading, today, topRated, popular, thisWeek, refreshFunc }) => (
+  <ScrollContainer
+    loading={loading}
+    refreshFunc={refreshFunc}>
     <Container>
-    <Title title={'Today'}></Title>
-      <HorizontalSlider>
-        {today.map(tv =>
+      <HorizontalSlider
+        title={'Today'}>
+        {today.map(show =>
           <Vertical
-            key={tv.id}
-            id={tv.id}
-            poster={tv.poster_path}
-            title={tv.name}
-            votes={tv.vote_average}/>
+            key={show.id}
+            id={show.id}
+            poster={show.poster_path}
+            title={show.name}
+            votes={show.vote_average}/>
         )}
       </HorizontalSlider>
 
-      <Title title={'Popular'}></Title>
-      <HorizontalSlider>
-        {popular.map(tv =>
+      <HorizontalSlider
+        title={'Popular'}>
+        {popular.map(show =>
           <Vertical
-            key={tv.id}
-            id={tv.id}
-            poster={tv.poster_path}
-            title={tv.name}
-            votes={tv.vote_average}/>
+            key={show.id}
+            id={show.id}
+            poster={show.poster_path}
+            title={show.name}
+            votes={show.vote_average}/>
         )}
       </HorizontalSlider>
 
       <List title={'Top Rated'}>
-        {topRated.map(tv => (
+        {topRated.map(show => (
           <Horizontal
-            key={tv.id}
-            id={tv.id}
-            title={tv.name}
-            releaseDate={tv.release_date}
-            poster={tv.poster_path}
-            overview={tv.overview} />
+            key={show.id}
+            id={show.id}
+            title={show.name}
+            releaseDate={show.release_date}
+            poster={show.poster_path}
+            overview={show.overview} />
         ))}
       </List>
     </Container>

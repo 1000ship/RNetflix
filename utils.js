@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const trimText = (text, limit) =>
-    (text.length > limit ? `${text.slice(0, limit)}...` : text);
+    (text && text.length > limit ? `${text.slice(0, limit)}...` : text);
 trimText.propTypes = {
     text: PropTypes.string.isRequired,
     limit: PropTypes.number.isRequired
