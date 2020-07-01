@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {View, Text, Button} from 'react-native';
-import { tvApi } from '../api';
+import { tvApi } from '../../api';
+import TvPresenter from './TvPresenter';
 
 export default () => {
   const [shows, setShows] = useState({
@@ -25,12 +26,5 @@ export default () => {
   useEffect(() => {
     getData()
   }, [])
-  return (
-    <View>
-      <Text>Tv</Text>
-      <Button
-        onPress={() => navigation.navigate('Detail')}
-        title="Go to Detail"></Button>
-    </View>
-  )
+  return <TvPresenter {...shows}/>;
 }
