@@ -3,12 +3,13 @@
     "name": "RNetflix",
     "slug": "RNetflix",
     "version": "1.0.0",
+    "sdkVersion": "36.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,10 +18,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "me.1000ship.RNetflix",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "me.ship1000.RNetflix",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Movie Information App made with React Native\nThis project is only for practice",
+    "githubUrl": "https://github.com/1000ship/RNetflix"
   }
 }
