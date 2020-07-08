@@ -27,6 +27,7 @@ export default ({
     releaseDate,
     overview,
     isTv,
+    error: null
   });
   
   React.useLayoutEffect(() => {
@@ -38,15 +39,20 @@ export default ({
     if (isTv) promises = tvApi.show(id);
     else promises = movieApi.movieDetail(id);
     let [getContent, getContentError] = await promises;
-    console.log(getContent, getContentError);
-    setMovie({
-      title: title || getContent?.original_title,
-      backgroundImage: backgroundImage || getContent?.backdrop_path,
-      poster: poster || getContent?.poster_path,
-      votes: votes || getContent?.vote_average,
-      overview: overview || getContent?.overview,
-      releaseDate: releaseDate || getContent?.release_date
-    });
+    if( getContentError )
+      setMovies({
+        error: getContentError
+      })
+    else
+      setMovie({
+        ...getContent, error: null,
+        title: title || getContent?.original_title,
+        backgroundImage: backgroundImage || getContent?.backdrop_path,
+        poster: poster || getContent?.poster_path,
+        votes: votes || getContent?.vote_average,
+        overview: overview || getContent?.overview,
+        releaseDate: releaseDate || getContent?.release_date
+      });
     setLoading(false);
   };
 

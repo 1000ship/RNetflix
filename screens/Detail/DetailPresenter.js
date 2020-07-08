@@ -5,6 +5,7 @@ import Poster from "../../components/Poster";
 import Votes from "../../components/Movies/Votes";
 import { apiImage, emptyImage } from "../../api";
 import { Dimensions, ActivityIndicator } from "react-native";
+import {formatDate} from '../../utils';
 
 const { height: HEIGHT } = Dimensions.get("window");
 
@@ -39,10 +40,11 @@ const Title = styled.Text`
 `;
 
 const Data = styled.View`
-  margin-top: 80px;
+  margin-top: 50px;
   padding: 0px 30px;
 `;
 const DataName = styled.Text`
+  margin-top: 30px;
   color: white;
   opacity: 0.8;
   font-weight: 800;
@@ -55,11 +57,27 @@ const DataValue = styled.Text`
   font-weight: 500;
 `;
 
-export default ({ id, title, backgroundImage, poster, votes, releaseDate, overview, loading, isTv }) => (
-  <ScrollContainer
-    loading={false}>
+export default ({
+  id,
+  title,
+  backgroundImage,
+  poster,
+  votes,
+  releaseDate,
+  overview,
+  loading,
+  videos,
+  spoken_languages,
+  release_date
+}) => (
+  <ScrollContainer loading={false}>
     <Header>
-      <BG resizeMode="cover" source={backgroundImage ? { uri: apiImage(backgroundImage) } : emptyImage} />
+      <BG
+        resizeMode="cover"
+        source={
+          backgroundImage ? { uri: apiImage(backgroundImage) } : emptyImage
+        }
+      />
       <Container>
         <Poster url={poster} />
         <Info>
@@ -75,7 +93,21 @@ export default ({ id, title, backgroundImage, poster, votes, releaseDate, overvi
           <DataValue>{overview}</DataValue>
         </>
       )}
-      {!overview && loading ? <ActivityIndicator style={{marginTop: 30}} color={'white'}/> : null}
+      {spoken_languages && (
+        <>
+          <DataName>Language</DataName>
+          <DataValue>{spoken_languages.map(l => l.name).join(' | ')}</DataValue>
+        </>
+      )}
+      {release_date && (
+        <>
+        <DataName>Release Date</DataName>
+        <DataValue>{formatDate(release_date)}</DataValue>
+      </>
+      )}
+      {!overview && !spoken_languages && loading ? (
+        <ActivityIndicator style={{ marginTop: 30 }} color={"white"} />
+      ) : null}
     </Data>
   </ScrollContainer>
 );

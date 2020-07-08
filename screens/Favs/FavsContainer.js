@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, Button} from 'react-native';
-import { movieApi } from '../api';
+import { movieApi } from '../../api';
+import FavsPresenter from './FavsPresenter';
+
 
 export default ({ navigation }) => {
   const [movies, setMovies] = useState({
@@ -16,12 +17,5 @@ export default ({ navigation }) => {
   useEffect(() => {
     getData()
   }, [])
-  return (
-    <View>
-      <Text>{movies.results?.length}</Text>
-      <Button
-        onPress={() => navigation.navigate('Detail')}
-        title="Go to Detail"></Button>
-    </View>
-  )
+  return <FavsPresenter {...movies} />
 }
