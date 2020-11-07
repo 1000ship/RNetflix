@@ -9,13 +9,9 @@
 
 ## Screenshots
 
-![Moives](./_readme/movies.png)
+![Moives](./_readme/movies.png) ![TV Shows](./_readme/tv.png)
 
-![TV Shows](./_readme/tv.png)
-
-![Detail](./_readme/detail.png)
-
-![Favorites](./_readme/favs.png)
+![Detail](./_readme/detail.png) ![Favorites](./_readme/favs.png)
 
 ## What I want to show you in this project especially
 
